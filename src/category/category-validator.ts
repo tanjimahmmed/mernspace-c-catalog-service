@@ -8,7 +8,7 @@ export default [
         .withMessage("Category name should be a string"),
     body("priceConfiguration")
         .exists()
-        .withMessage("price configuration is required"),
+        .withMessage("Price configuration is required"),
     body("priceConfiguration.*.priceType")
         .exists()
         .withMessage("Price type is required")
@@ -17,10 +17,11 @@ export default [
             if (!validKeys.includes(value)) {
                 throw new Error(
                     `${value} is invalid attribute for priceType field. Possible values are: [${validKeys.join(
-                        ", ", // base, adtional
+                        ", ", // base, addtional
                     )}]`,
                 );
             }
+            return true;
         }),
     body("attributes").exists().withMessage("Attributes field is required"),
 ];
