@@ -27,9 +27,7 @@ export class CategoryController {
             priceConfiguration,
             attributes,
         });
-
         this.logger.info(`Created category`, { id: category._id });
-
         res.json({ id: category._id });
     }
 }
