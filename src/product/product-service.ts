@@ -17,4 +17,8 @@ export class ProductService {
             { new: true },
         );
     }
+
+    async getProduct(productId: string): Promise<Product | null> {
+        return await productModel.findOne({ _id: productId });
+    }
 }
