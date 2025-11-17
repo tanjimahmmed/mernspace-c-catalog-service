@@ -48,6 +48,7 @@ router.put(
     updateProductValidator,
     asyncWrapper(productController.update),
 );
-// router.post("/", categoryValidator, categoryController.create.bind(categoryController));
+
+router.get("/", asyncWrapper(productController.index));
 
 export default router;
