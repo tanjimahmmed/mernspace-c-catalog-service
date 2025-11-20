@@ -20,6 +20,6 @@ router.post(
     categoryValidator,
     asyncWrapper(categoryController.create),
 );
-// router.post("/", categoryValidator, categoryController.create.bind(categoryController));
+router.get("/", asyncWrapper(categoryController.index));
 
 export default router;
