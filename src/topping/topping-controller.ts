@@ -45,6 +45,7 @@ export class ToppingController {
 
             const readyToppings = toppings.map((topping) => {
                 return {
+                    id: topping._id,
                     name: topping.name,
                     price: topping.price,
                     tenantId: topping.tenantId,
