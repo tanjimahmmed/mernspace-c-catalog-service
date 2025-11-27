@@ -12,6 +12,7 @@ export class CategoryController {
     ) {
         this.create = this.create.bind(this);
         this.index = this.index.bind(this);
+        this.getOne = this.getOne.bind(this);
     }
 
     async create(req: Request, res: Response, next: NextFunction) {
@@ -30,6 +31,16 @@ export class CategoryController {
         });
         this.logger.info(`Created category`, { id: category._id });
         res.json({ id: category._id });
+    }
+
+    async getOne(req: Request, res: Response, next: NextFunction) {
+        const { categoryId } = req.params;
+        const category = await this.categoryService.getOne(categoryId);
+        if (!category) {
+            return next(createHttpError(404, "Category not found"));
+        }
+        this.logger.info(`Getting category`, { id: category._id });
+        res.json({ category });
     }
 
     async index(req: Request, res: Response) {
